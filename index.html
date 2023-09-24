@@ -6,18 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Space X</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <link rel="icon" href="Photos/SpaceXLogo.png" type="image/x-icon" />
+    <link rel="icon" href="Photos/favicon.ico" type="image/x-icon" />
 
 </head>
 
 <body>
-    <h1>SpaceX Launches</h1>
+    <h1 class="spaceX">SpaceX <span class="launchText">Launches</span></h1>
+
     <input type="text" id="inputDisplay" placeholder="Enter a keyword...">
+
     <div id="launches"></div>
+
     <div id="loading">
         <div class="loading-spinner"></div>
         <h2>Loading...</h2>
     </div>
+
     <div id="noMoreData">No more data available.</div>
 </body>
 
