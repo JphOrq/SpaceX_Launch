@@ -6,14 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Space X</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="spacelab-bootstrap.css" /> -->
     <link rel="icon" href="Photos/favicon.ico" type="image/x-icon" />
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" charset="UTF-8"></script>
 </head>
 
 <body>
     <h1 class="spaceX">SpaceX <span class="launchText">Launches</span></h1>
 
     <input type="text" id="inputDisplay" placeholder="Enter a keyword...">
+
+    <div class="container">
+        <div class="card-content">
+            <div class="card">
+                <div class="card-image"><img src="Photos/Falcon9.jpg"></div>
+                <div class="card-info">
+                    <h3>Rocket 1</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image"><img src="Photos/Falcon9.jpg"></div>
+                <div class="card-info">
+                    <h3>Rocket 2</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image"><img src="Photos/Falcon9.jpg"></div>
+                <div class="card-info">
+                    <h3>Rocket 3</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                </div>
+            </div>
+
+            <div class="pagination">
+                <li class="page-item previous-page disable"><a class="page-link" href="#">Prev</a></li>
+                <li class="page-item current-page active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item dots"><a class="page-link" href="#">...</a></li>
+                <li class="page-item current-page"><a class="page-link" href="#">5</a></li>
+                <li class="page-item current-page"><a class="page-link" href="#">6</a></li>
+                <li class="page-item dots"><a class="page-link" href="#">...</a></li>
+                <li class="page-item current-page"><a class="page-link" href="#">10</a></li>
+                <li class="page-item next-page"><a class="page-link" href="#">Next</a></li>
+            </div>
+        </div>
+    </div>
 
     <div id="launches"></div>
 
