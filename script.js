@@ -28,6 +28,7 @@ function fetchData() {
 
       if (data.length > 0) {
         displayLaunches(data);
+        displayPagination();
         page++;
       } else {
         hasMoreData = false;
@@ -43,10 +44,6 @@ function fetchData() {
 
 fetchData();
 
-if (!hasMoreData) {
-  noMoreDataMessage.style.display = "block";
-}
-
 window.addEventListener("scroll", function () {
   if (
     document.documentElement.scrollHeight -
@@ -61,17 +58,25 @@ window.addEventListener("scroll", function () {
 
 function displayLaunches(launches) {
   launches.forEach(function (launch) {
-    var launchInfo = document.createElement("div");
-    launchInfo.className = "launch-info";
-    launchInfo.innerHTML = `
-      <h3>${launch.name}</h3>
-      <p>Date: ${launch.date_utc}</p>
-      <p>Rocket: ${launch.rocket}</p>
-      <p>Success: ${launch.success ? "Yes" : "No"}</p>
-      <hr>
-    `;
-    launchesDiv.appendChild(launchInfo);
+    var launchCard = createLaunchCard(launch);
+    launchesDiv.appendChild(launchCard);
   });
+}
+
+function createLaunchCard(launch) {
+  var card = document.createElement("div");
+  card.className = "card";
+  card.innerHTML = `
+    <div class="card-image"><img src="Photos/Falcon9.jpg"></div>
+    <div class="card-info">
+        <h3>${launch.name}</h3>
+        <p>Date: ${launch.date_utc}</p>
+        <p>Rocket: ${launch.rocket}</p>
+        <p>Success: ${launch.success ? "Yes" : "No"}</p>
+        <hr>
+    </div>
+  `;
+  return card;
 }
 
 fetchData();
