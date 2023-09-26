@@ -8,7 +8,7 @@ var page = 1;
 
 function showNoMoreDataMessage() {
   noMoreDataMessage.style.display = "";
-  noMoreDataMessage.innerHTML = "No more data available.";
+  noMoreDataMessage.innerHTML = "No more data available";
 }
 
 function hideNoMoreDataMessage() {
