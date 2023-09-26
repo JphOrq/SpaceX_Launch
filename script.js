@@ -44,17 +44,17 @@ function fetchData() {
 
 fetchData();
 
-window.addEventListener("scroll", function () {
-  if (
-    document.documentElement.scrollHeight -
-      (window.innerHeight + window.scrollY) <
-    scrollThreshold
-  ) {
-    if (!isLoading && hasMoreData) {
-      fetchData();
-    }
-  }
-});
+// window.addEventListener("scroll", function () {
+//   if (
+//     document.documentElement.scrollHeight -
+//       (window.innerHeight + window.scrollY) <
+//     scrollThreshold
+//   ) {
+//     if (!isLoading && hasMoreData) {
+//       fetchData();
+//     }
+//   }
+// });
 
 function displayLaunches(launches) {
   launches.forEach(function (launch) {
@@ -78,8 +78,6 @@ function createLaunchCard(launch) {
   `;
   return card;
 }
-
-fetchData();
 
 function filterLaunches(keyword) {
   var filteredLaunches = launchesData.filter(function (launch) {
