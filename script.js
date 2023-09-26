@@ -2,10 +2,19 @@ var apiUrl = "https://api.spacexdata.com/v4/launches/";
 var launchesDiv = document.getElementById("launches");
 var loadingIndicator = document.getElementById("loading");
 var noMoreDataMessage = document.getElementById("noMoreData");
-var scrollThreshold = 1;
 var isLoading = false;
 var hasMoreData = true;
 var page = 1;
+
+function showNoMoreDataMessage() {
+  noMoreDataMessage.style.display = "";
+  noMoreDataMessage.innerHTML = "No more data available.";
+}
+
+function hideNoMoreDataMessage() {
+  noMoreDataMessage.style.display = "none";
+  noMoreDataMessage.innerHTML = "";
+}
 
 function fetchData() {
   if (isLoading || !hasMoreData) {
@@ -28,11 +37,10 @@ function fetchData() {
 
       if (data.length > 0) {
         displayLaunches(data);
-        displayPagination();
         page++;
       } else {
         hasMoreData = false;
-        noMoreDataMessage.style.display = "block";
+        showNoMoreDataMessage();
       }
     })
     .catch(function (error) {
@@ -44,17 +52,27 @@ function fetchData() {
 
 fetchData();
 
-// window.addEventListener("scroll", function () {
-//   if (
-//     document.documentElement.scrollHeight -
-//       (window.innerHeight + window.scrollY) <
-//     scrollThreshold
-//   ) {
-//     if (!isLoading && hasMoreData) {
-//       fetchData();
-//     }
-//   }
-// });
+var lastScrollPosition = 0;
+
+window.addEventListener("scroll", function () {
+  var currentScrollPosition = window.scrollY;
+
+  if (
+    currentScrollPosition > lastScrollPosition &&
+    window.innerHeight + currentScrollPosition >=
+      document.body.offsetHeight - 1 &&
+    !isLoading &&
+    hasMoreData
+  ) {
+    showNoMoreDataMessage();
+  }
+
+  if (currentScrollPosition < lastScrollPosition) {
+    hideNoMoreDataMessage();
+  }
+
+  lastScrollPosition = currentScrollPosition;
+});
 
 function displayLaunches(launches) {
   launches.forEach(function (launch) {
