@@ -50,11 +50,26 @@ body {
 
 #launches {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 1rem;
     max-width: 800px;
     margin: 0 auto;
     padding: 2rem;
+}
+
+.column {
+    flex: 1;
+    max-width: calc(33.33% - 1rem);
+    margin-right: 1rem;
+    box-sizing: border-box;
+}
+
+.column:nth-child(3n) {
+    margin-right: 0;
+}
+
+.column:last-child {
+    margin-right: 0;
 }
 
 .launch-info {
