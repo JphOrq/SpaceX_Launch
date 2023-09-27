@@ -2,6 +2,7 @@ var apiUrl = "https://api.spacexdata.com/v4/launches/";
 var launchesDiv = document.getElementById("launches");
 var loadingIndicator = document.getElementById("loading");
 var noMoreDataMessage = document.getElementById("noMoreData");
+var scrollToTopButton = document.getElementById("scrollToTopButton");
 var isLoading = false;
 var hasMoreData = true;
 var page = 1;
@@ -16,6 +17,7 @@ function hideNoMoreDataMessage() {
   noMoreDataMessage.innerHTML = "";
 }
 
+//fetch data from the API
 function fetchData() {
   if (isLoading || !hasMoreData) {
     return;
@@ -74,6 +76,45 @@ window.addEventListener("scroll", function () {
   lastScrollPosition = currentScrollPosition;
 });
 
+// Function to scroll to the top with smooth animation
+function scrollToTop() {
+  var currentY = window.scrollY;
+
+  function animateScroll() {
+    // Calculate the step for smooth animation
+    var step = Math.max(currentY / 20, 20);
+
+    // Calculate the new scroll position
+    currentY = currentY - step;
+
+    // Scroll to the new position
+    window.scrollTo(0, currentY);
+
+    // Continue the animation until reaching the top
+    if (currentY > 0) {
+      requestAnimationFrame(animateScroll);
+    }
+  }
+
+  // Start the smooth scroll animation
+  requestAnimationFrame(animateScroll);
+}
+
+// Show or hide the button based on scroll position
+window.addEventListener("scroll", function () {
+  if (window.scrollY > 300) {
+    scrollToTopButton.style.display = "block";
+  } else {
+    scrollToTopButton.style.display = "none";
+  }
+});
+
+// Scroll to the top when the button is clicked
+scrollToTopButton.addEventListener("click", function () {
+  scrollToTop();
+});
+
+// display the launches
 function displayLaunches(launches) {
   launches.forEach(function (launch) {
     var launchCard = createLaunchCard(launch);
@@ -81,6 +122,7 @@ function displayLaunches(launches) {
   });
 }
 
+// display the launch info
 function createLaunchCard(launch) {
   var card = document.createElement("div");
   card.className = "card";
@@ -97,6 +139,7 @@ function createLaunchCard(launch) {
   return card;
 }
 
+// filter keyword on-progress
 function filterLaunches(keyword) {
   var filteredLaunches = launchesData.filter(function (launch) {
     return (
