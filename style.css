@@ -240,6 +240,27 @@ body {
     background: #ccc;
 }
 
+.scroll-to-top-button {
+    display: none;
+    position: fixed;
+    bottom: 55px;
+    right: 20px;
+    background-color: #0ab1ce;
+    color: #fff;
+    border: none;
+    border-radius: 45px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.scroll-to-top-button:hover {
+    background-color: #007bff;
+}
+
 #noMoreData {
     position: fixed;
     bottom: 0;
